@@ -3,6 +3,8 @@
 
 #include <QLabel>
 #include <QPixmap>
+#include <QGridLayout>
+#include <QString>
 
 #include "maplayer.h"
 #include "core/geopoint.h"
@@ -13,22 +15,22 @@ using namespace std;
 const string OSM_MAP_URL_FORMAT = "http://a.tile.openstreetmap.org/%d/%d/%d.png";
 const string CYCLE_MAP_URL_FORMAT = "http://a.tile.opencyclemap.org/cycle/%d/%d/%d.png";
 
-MapLayer::MapLayer(QWidget *parent) : QWidget(parent)
+MapLayer::MapLayer(QWidget *parent) : QGridLayout(parent)
 {
     this->loc = new GeoPoint(0.0, 0.0 ,0.0);
     this->zoom = 0;
 
     // Create the grid layout
-    this->gridLayout = new QGridLayout(parent);
-    this->gridLayout->setHorizontalSpacing(0);
-    this->gridLayout->setVerticalSpacing(0);
+    this->setHorizontalSpacing(0);
+    this->setVerticalSpacing(0);
 
     QLabel *myimage = new QLabel();
+    myimage->setText("Hello");
 
-    QPixmap pix("E:\Development\map_tiles\1.png");
-    myimage->setPixmap(pix);
+    //QPixmap pix("E:\\Development\\map_tiles\\1.png");
+    //myimage->setPixmap(pix);
 
-    this->gridLayout->addWidget(myimage, 0, 0);
+    this->addWidget(myimage, 0, 0);
 }
 
 GeoPoint *MapLayer::getLocation() {

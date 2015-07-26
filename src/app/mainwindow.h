@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
+#include <QGridLayout>
+
 #include "about.h"
 
 class QAction;
@@ -22,6 +24,9 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+    QGridLayout gridMapView;
+
     About *mAboutWindow;
 
 public slots:

@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class MapLayer : public QWidget
+class MapLayer : public QGridLayout
 {
     Q_OBJECT
 
@@ -28,7 +28,6 @@ private:
     static const string CYCLE_MAP_URL_FORMAT;
 
     // Fields
-    QGridLayout* gridLayout;
     GeoPoint* loc;
     int zoom;
 
