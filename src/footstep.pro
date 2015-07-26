@@ -14,9 +14,16 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         app/mainwindow.cpp \
-    model/track.cpp
+    app/about.cpp \
+    app/controls/maplayer.cpp \
+    core/geopoint.cpp \
+    app/controls/geolayer.cpp
 
 HEADERS  += app/mainwindow.h \
-    model/track.h
+    app/about.h \
+    app/controls/maplayer.h \
+    core/geopoint.h \
+    app/controls/geolayer.h
 
-FORMS    += ui/mainwindow.ui
+FORMS    += ui/mainwindow.ui \
+    ui/about.ui

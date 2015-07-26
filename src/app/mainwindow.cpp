@@ -1,39 +1,30 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
+#include "app/controls/maplayer.h"
+
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
-    // Create the actions
-    this->createActions();
-    this->createMenus();
+    MapLayer *mapLayer = new MapLayer(parent);
+    setCentralWidget(mapLayer);
 
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::createMenus() {
-
-}
-
-void MainWindow::createActions() {
-
-}
-
 void MainWindow::fileExit() {
-
     qApp->exit(0);
-
 }
 
 void MainWindow::openFile() {
-
     QString filename = QFileDialog::getOpenFileName(this, tr("Open Image"), "/home/jana", tr("Image Files (*.png *.jpg *.bmp)"));
+}
 
+void MainWindow::showAbout() {
+    mAboutWindow = new About();
+    mAboutWindow->setModal(true);
+    mAboutWindow->show();
 }

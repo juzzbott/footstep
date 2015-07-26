@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QFileDialog>
+#include "about.h"
 
 class QAction;
 class QMenu;
@@ -21,15 +22,14 @@ public:
 
 private:
     Ui::MainWindow *ui;
-
-    void createActions();
-    void createMenus();
+    About *mAboutWindow;
 
 public slots:
 
     //! Exit Footstep
     void fileExit();
     void openFile();
+    void showAbout();
 
 };
 
