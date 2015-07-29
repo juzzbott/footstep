@@ -25,8 +25,6 @@ public:
 private:
     Ui::MainWindow *ui;
 
-    QGridLayout gridMapView;
-
     About *mAboutWindow;
 
 public slots:

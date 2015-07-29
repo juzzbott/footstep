@@ -2,21 +2,38 @@
 #include "ui_mainwindow.h"
 
 #include <QLabel>
+#include <QGraphicsScene>
+#include <QGraphicsItem>
 
-#include "app/controls/maplayer.h"
+#include "app/controls/mapscene.h"
+#include "app/controls/mapview.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
+
     ui->setupUi(this);
 
-    // Add the map layer to the
-    MapLayer *mapLayer = new MapLayer(parent);
 
-    QLabel *myimage = new QLabel();
+    MapScene *scene = new MapScene(this);
+    MapView *view = new MapView(scene, this);
+    view->setDragMode(QGraphicsView::ScrollHandDrag);
 
-    QPixmap pix ("E:\\Development\\map_tiles\\1.png");
-    myimage->setPixmap(pix);
+    QBrush greenBrush(Qt::green);
+    QPen outlinePen(Qt::black);
+    outlinePen.setWidth(2);
 
-    setCentralWidget(myimage);
+    //QGraphicsRectItem *rectangle = scene->addRect(100, 0, 80, 100, outlinePen, greenBrush);
+    //rectangle->setFlag(QGraphicsItem::ItemIsMovable);
+
+    QImage image("E:/Development/1.png");
+    QGraphicsPixmapItem* item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+    scene->addItem(item);
+
+    QGraphicsPixmapItem* item2 = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+    item2->setPos(768,0);
+    scene->addItem(item2);
+
+    setCentralWidget(view);
+
 
 }
 

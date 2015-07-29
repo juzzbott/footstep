@@ -1,0 +1,17 @@
+INPUT(
+./debug\main.o
+./debug\mainwindow.o
+./debug\about.o
+./debug\geopoint.o
+./debug\geolayer.o
+./debug\mapscene.o
+./debug\mapview.o
+./debug\layerobject.o
+./debug\internalgraphicsscene.o
+./debug\moc_mainwindow.o
+./debug\moc_about.o
+./debug\moc_mapscene.o
+./debug\moc_mapview.o
+./debug\moc_layerobject.o
+./debug\moc_internalgraphicsscene.o
+);

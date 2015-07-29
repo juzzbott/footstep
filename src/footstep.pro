@@ -15,15 +15,23 @@ TEMPLATE = app
 SOURCES += main.cpp\
         app/mainwindow.cpp \
     app/about.cpp \
-    app/controls/maplayer.cpp \
     core/geopoint.cpp \
-    app/controls/geolayer.cpp
+    app/controls/geolayer.cpp \
+    app/controls/mapscene.cpp \
+    app/controls/mapview.cpp \
+    app/controls/layerobject.cpp \
+    app/controls/internal/internalgraphicsscene.cpp \
+    app/controls/internal/internalgraphicsview.cpp
 
 HEADERS  += app/mainwindow.h \
     app/about.h \
-    app/controls/maplayer.h \
     core/geopoint.h \
-    app/controls/geolayer.h
+    app/controls/geolayer.h \
+    app/controls/mapscene.h \
+    app/controls/mapview.h \
+    app/controls/layerobject.h \
+    app/controls/internal/internalgraphicsscene.h \
+    app/controls/internal/internalgraphicsview.h
 
 FORMS    += ui/mainwindow.ui \
     ui/about.ui

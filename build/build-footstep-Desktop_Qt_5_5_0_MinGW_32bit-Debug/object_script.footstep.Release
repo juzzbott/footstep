@@ -1,0 +1,17 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\about.o
+./release\geopoint.o
+./release\geolayer.o
+./release\mapscene.o
+./release\mapview.o
+./release\layerobject.o
+./release\internalgraphicsscene.o
+./release\moc_mainwindow.o
+./release\moc_about.o
+./release\moc_mapscene.o
+./release\moc_mapview.o
+./release\moc_layerobject.o
+./release\moc_internalgraphicsscene.o
+);
