@@ -2,13 +2,13 @@
 
 #include <QWheelEvent>
 
-InternalGraphicsView::InternalGraphicsView(QWidget *parent) : QGraphicsView(paremt)
+InternalGraphicsView::InternalGraphicsView(QWidget *parent) : QGraphicsView(parent)
 {
     this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
-InternalGraphicsView::InternalGraphicsView(QGraphicsScene *scene, QWidget *parent) : QGraphicsView(scene, paremt)
+InternalGraphicsView::InternalGraphicsView(QGraphicsScene *scene, QWidget *parent) : QGraphicsView(scene, parent)
 {
     this->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     this->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -22,9 +22,9 @@ InternalGraphicsView::~InternalGraphicsView()
 void InternalGraphicsView::wheelEvent(QWheelEvent *event) {
 
     event->setAccepted(false);
-    this->handleWheelEvent(event);
+    this->hadWheelEvent(event);
     if (!event->isAccepted()) {
-        QGraphicsView.wheelEvent(event);
+        QGraphicsView::wheelEvent(event);
     }
 
 }

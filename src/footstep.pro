@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     app/controls/mapview.cpp \
     app/controls/layerobject.cpp \
     app/controls/internal/internalgraphicsscene.cpp \
-    app/controls/internal/internalgraphicsview.cpp
+    app/controls/internal/internalgraphicsview.cpp \
+    app/controls/tilesources/maptilesource.cpp
 
 HEADERS  += app/mainwindow.h \
     app/about.h \
@@ -31,7 +32,8 @@ HEADERS  += app/mainwindow.h \
     app/controls/mapview.h \
     app/controls/layerobject.h \
     app/controls/internal/internalgraphicsscene.h \
-    app/controls/internal/internalgraphicsview.h
+    app/controls/internal/internalgraphicsview.h \
+    app/controls/tilesources/maptilesource.h
 
 FORMS    += ui/mainwindow.ui \
     ui/about.ui

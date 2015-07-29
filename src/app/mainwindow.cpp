@@ -15,7 +15,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     MapScene *scene = new MapScene(this);
     MapView *view = new MapView(scene, this);
-    view->setDragMode(QGraphicsView::ScrollHandDrag);
 
     QBrush greenBrush(Qt::green);
     QPen outlinePen(Qt::black);

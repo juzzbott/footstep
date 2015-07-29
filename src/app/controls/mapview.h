@@ -35,8 +35,8 @@ public:
     //
     //GeoPoint mapToScene(const QPoint viewPos) const;
     //
-    //MapView::DragMode dragMode() const;
-    //void setDragMode(MapView::DragMode);
+    MapView::DragMode dragMode() const;
+    void setDragMode(MapView::DragMode);
 
     MapScene *scene() const;
     void setScene(MapScene *scene);
@@ -48,6 +48,7 @@ public:
 
 private:
     quint8 _zoomLevel;
+    DragMode _dragMode;
 
     QPointer<QGraphicsView> _childView;
 
@@ -57,7 +58,9 @@ private:
 signals:
     void zoomLevelChanged(quint8 zoom);
 
-public slots:
+protected slots:
+    virtual void handleChildViewScrollWheel(QWheelEvent *event);
+
 };
 
 #endif // MAPVIEW_H

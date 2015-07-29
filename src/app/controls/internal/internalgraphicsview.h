@@ -14,10 +14,10 @@ public:
     virtual ~InternalGraphicsView();
 
 protected:
-    virtual void wheelEvent();
+    virtual void wheelEvent(QWheelEvent *event);
 
 signals:
-    void handleWheelEvent(QWheelEvent *);
+    void hadWheelEvent(QWheelEvent *);
 
 };
 
