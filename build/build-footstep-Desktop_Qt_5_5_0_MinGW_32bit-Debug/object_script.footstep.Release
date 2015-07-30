@@ -8,10 +8,14 @@ INPUT(
 ./release\mapview.o
 ./release\layerobject.o
 ./release\internalgraphicsscene.o
+./release\internalgraphicsview.o
+./release\maptilesource.o
 ./release\moc_mainwindow.o
 ./release\moc_about.o
 ./release\moc_mapscene.o
 ./release\moc_mapview.o
 ./release\moc_layerobject.o
 ./release\moc_internalgraphicsscene.o
+./release\moc_internalgraphicsview.o
+./release\moc_maptilesource.o
 );
