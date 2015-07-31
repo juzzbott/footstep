@@ -17,7 +17,7 @@ public:
     Q_DECLARE_FLAGS(MapGraphicsObjectFlags,MapGraphicsObjectFlag)
 
 public:
-    explicit MapGraphicsObject(QObject *parent = 0);
+    explicit MapGraphicsObject(bool sizeIsZoomInvariant, QObject *parent = 0);
 
 signals:
 

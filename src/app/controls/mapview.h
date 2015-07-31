@@ -28,7 +28,7 @@ public:
 
 public:
     explicit MapView(MapScene *scene, QWidget *parent = 0);
-    //virtual ~MapView();
+    virtual ~MapView();
     //
     //GeoPoint center() const;
     //void centerOn(const GeoPoint& pos);
