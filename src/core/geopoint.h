@@ -4,20 +4,21 @@
 class GeoPoint {
 
 public:
+    GeoPoint();
     GeoPoint(double lat, double lon);
     GeoPoint(double lat, double lon, double alt);
 
-    double getLatitude();
-    double getLongitude();
-    double getAltitude();
+    double latitude() const;
+    double longitude() const;
+    double altitude() const;
 
     void setPoint(double lat, double lon);
     void setPoint(double lat, double lon, double alt);
 
 private:
-    double lat;
-    double lon;
-    double alt;
+    double _lat;
+    double _lon;
+    double _alt;
 
 };
 

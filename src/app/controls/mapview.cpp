@@ -1,9 +1,13 @@
+#include <QCoreApplication>
 #include <QGraphicsView>
 #include <QGraphicsScene>
 #include <QWidget>
 #include <QWheelEvent>
+#include <QtDebug>
+#include <QThread>
 
 #include "mapview.h"
+#include "tilesources/maptilesource.h"
 #include "internal/internalgraphicsscene.h"
 #include "internal/internalgraphicsview.h"
 
@@ -18,6 +22,39 @@ MapView::MapView(MapScene *scene, QWidget *parent) : QGraphicsView(parent)
     this->setDragMode(MapView::ScrollHandDrag);
 
 
+}
+
+MapView::~MapView() {
+
+    qDebug() << this << "Destructing map view";
+
+    // Clear all the tile objects
+
+    // Clear the tile source
+    if (!_tileSource.isNull()) {
+
+        // Get the thread of the tile source
+        QPointer<QThread> tileSourceThread = _tileSource->thread();
+
+        /*
+         Clear the QSharedPointer to the tilesource. Unless there's a serious problem, we should be the
+         last thing holding that reference and we expect it to be deleted
+        */
+        _tileSource.clear();
+
+        // After the tilesource is cleared, we wait for the thread it was running to shut down
+        int count = 0;
+        const int maxCount = 100;
+        while (!tileSourceThread.isNull() && !tileSourceThread->wait(100)) {
+            //We have to process events while it's shutting down in case it uses signals/slots to shut down
+            //Hint: it does
+            QCoreApplication::processEvents(QEventLoop::ExcludeSocketNotifiers | QEventLoop::ExcludeUserInputEvents);
+            if (++count == maxCount) {
+                return;
+            }
+        }
+
+    }
 }
 
 //
@@ -100,6 +137,41 @@ void MapView::setZoomLevel(quint8 zoom, ZoomMode mode) {
     // Set the new zoom level
     _zoomLevel = zoom;
 
+}
+
+//
+// Tile Source
+//
+QSharedPointer<MapTileSource>  MapView::tileSource() const {
+    return _tileSource;
+}
+
+void MapView::setTileSource(QSharedPointer<MapTileSource> tileSource) {
+
+    // Set the tile source
+    _tileSource = tileSource;
+
+    if (!tileSource.isNull()) {
+
+        // Create a new thread just for the new tile source
+        QThread *tileSourceThread = new QThread();
+        tileSourceThread->start();
+        _tileSource->moveToThread(tileSourceThread);
+
+        // Connect so that the thread is destroyed when the tile source is.
+        connect(_tileSource.data(),
+                SIGNAL(destroyed()),
+                tileSourceThread,
+                SLOT(quit()));
+
+        connect(tileSourceThread,
+                SIGNAL(finished()),
+                tileSourceThread,
+                SLOT(deleteLater()));
+
+    }
+
+    // Update the MapGrahicsObject
 }
 
 //

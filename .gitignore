@@ -99,4 +99,5 @@ $RECYCLE.BIN/
 .Trash-*
 
 # The build directory
+build/
 *build-

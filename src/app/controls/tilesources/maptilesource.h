@@ -10,6 +10,8 @@
 #include <QObject>
 #include <QHash>
 
+#include "core/geopoint.h"
+
 class MapTileSource : public QObject
 {
     Q_OBJECT
@@ -46,8 +48,62 @@ public:
      */
     QImage *getFinishedTile(quint32 x, quint32 y, quint8 zoom);
 
+    /**
+     * @brief Gets the cache mode for the current map tile source.
+     * @return MapTileSource.CacheMode
+     */
     MapTileSource::CacheMode cacheMode() const;
+
+    /**
+     * @brief Sets the cache mode for the current map tile source.
+     */
     void setCacheMode(MapTileSource::CacheMode);
+
+    /**
+     * @brief Converts a lat/lon geopoint into QGraphicsScene point. An implementation of the MapTileSource class must implement this method.
+     * @param latLon The geo point (lat,lon) to convert.
+     * @param zoomLevel The zoom level used to convert.
+     * @return QPointF a point in QGraphicsScene coordinates
+     */
+    virtual QPointF latLonToSceneCoords(const GeoPoint &latLon, quint8 zoomLevel) const = 0;
+
+    /**
+     * @brief Converts a QGraphicsScene point to a lat,lon geopoint. An implementation of the MapTileSource class must implement this method.
+     * @param sceneCoords A point in pixel QGraphicsScene coordinates.
+     * @param zoomLevel The zoom level used to convert.
+     * @return THe lat,lon geopoint.
+     */
+    virtual GeoPoint sceneCoordsToLatLon(const QPointF &sceneCoords, quint8 zoomLevel) const = 0;
+
+    /**
+     * @brief Detrmines the total number of tiles for the zoom level. An implementation of the MapTileSource class must implement this method.
+     * @param zoomLevel
+     * @return
+     */
+    virtual quint64 tilesForZoomLevel(quint8 zoomLevel) const = 0;
+
+    /**
+     * @brief Returns the length and width of the tile in pixels. Tiles are assumed to be square.
+     * An implementation of the MapTileSource class must implement this method.
+     * @return
+     */
+    virtual quint16 tileSize() const = 0;
+
+    /**
+     * @brief Determines the minimum zoom level (most zoomed out) available at the given lat,lon.
+     * An implementation of the MapTileSource class must implement this method.
+     * @param latLon
+     * @return
+     */
+    virtual quint8 minZoomLevel(GeoPoint latLon = GeoPoint()) = 0;
+
+    /**
+     * @brief Determines the maximum zoom level (most zoomed in) available at the given lat,lon
+     * An implementation of the MapTileSource class must implement this method.
+     * @param latLon
+     * @return
+     */
+    virtual quint8 maxZoomLevel(GeoPoint latLon = GeoPoint()) = 0;
 
     /**
      * @brief Returns the name of the map tile source. An implementation of the MapTileSource class must implement this method.

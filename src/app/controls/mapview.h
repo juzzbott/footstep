@@ -4,9 +4,11 @@
 #include <QGraphicsView>
 #include <QWidget>
 #include <QPointer>
+#include <QSharedPointer>
 
 #include "mapscene.h"
 #include "core/geopoint.h"
+#include "tilesources/maptilesource.h"
 
 class MapView : public QGraphicsView
 {
@@ -46,6 +48,24 @@ public:
     void zoomIn(ZoomMode mode = CenterZoom);
     void zoomOut(ZoomMode mode = CenterZoom);
 
+    /**
+     * @brief Gets the map tile source.
+     * @return
+     */
+    QSharedPointer<MapTileSource> tileSource() const;
+
+    /**
+     * @brief Sets the tile source for the map view.
+     * @param tileSource
+     */
+    void setTileSource(QSharedPointer<MapTileSource> tileSource);
+
+signals:
+    void zoomLevelChanged(quint8 zoom);
+
+protected slots:
+    virtual void handleChildViewScrollWheel(QWheelEvent *event);
+
 private:
     quint8 _zoomLevel;
     DragMode _dragMode;
@@ -55,11 +75,7 @@ private:
     QPointer<MapScene> _scene;
     QPointer<QGraphicsScene> _childScene;
 
-signals:
-    void zoomLevelChanged(quint8 zoom);
-
-protected slots:
-    virtual void handleChildViewScrollWheel(QWheelEvent *event);
+    QSharedPointer<MapTileSource> _tileSource;
 
 };
 
