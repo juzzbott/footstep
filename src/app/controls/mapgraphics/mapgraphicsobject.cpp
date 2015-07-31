@@ -1,6 +1,10 @@
 #include "mapgraphicsobject.h"
 
-MapGraphicsObject::MapGraphicsObject(QObject *parent) : QObject(parent)
+#include <QtDebug>
+#include <QKeyEvent>
+#include <QTimer>
+
+MapGraphicsObject::MapGraphicsObject(bool sizeIsZoomInvariant, QObject *parent) : QObject(parent)
 {
 
 }
