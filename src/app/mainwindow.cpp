@@ -53,3 +53,9 @@ void MainWindow::showAbout() {
     mAboutWindow->setModal(true);
     mAboutWindow->show();
 }
+
+void MainWindow::showPreferences() {
+    mPreferencesWindow = new Preferences();
+    mPreferencesWindow->setModal(true);
+    mPreferencesWindow->show();
+}

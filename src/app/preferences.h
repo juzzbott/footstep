@@ -2,6 +2,7 @@
 #define PREFERENCES_H
 
 #include <QDialog>
+#include <QLineEdit>
 
 namespace Ui {
 class Preferences;
@@ -15,8 +16,13 @@ public:
     explicit Preferences(QWidget *parent = 0);
     ~Preferences();
 
+public slots:
+    void browseProfileDirectory();
+
 private:
     Ui::Preferences *ui;
+
+    QLineEdit _txtProfileDirectory;
 };
 
 #endif // PREFERENCES_H

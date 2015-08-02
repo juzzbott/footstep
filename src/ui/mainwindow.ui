@@ -76,6 +76,9 @@
    <property name="text">
     <string>&amp;Preferences</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -129,10 +132,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionPreferences</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>showPreferences()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>512</x>
+     <y>306</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>fileExit()</slot>
   <slot>openFile()</slot>
   <slot>showAbout()</slot>
+  <slot>showPreferences()</slot>
  </slots>
 </ui>
