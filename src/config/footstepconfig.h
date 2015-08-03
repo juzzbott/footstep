@@ -21,6 +21,8 @@ public:
     CoordinateTypes coordinateType() const;
     void setCoordinateType(CoordinateTypes coordType);
 
+    static FootstepConfig *Default();
+
 private:
 
     /**

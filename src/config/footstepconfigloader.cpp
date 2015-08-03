@@ -9,6 +9,7 @@
 #include <QStandardPaths>
 #include <QtDebug>
 
+#include "footstepconfig.h"
 #include "footstepconfigloader.h"
 #include "core/constants.h"
 #include "lib/json.h"
@@ -38,6 +39,9 @@ FootstepConfigLoader::FootstepConfigLoader()
 }
 
 FootstepConfigLoader::~FootstepConfigLoader() {
+
+    // Delete the config
+    delete _config;
 
 }
 
@@ -96,6 +100,18 @@ void FootstepConfigLoader::ensureDefaultConfiguration() {
         // Save the location file
         this->saveConfLocationFile();
 
+        FootstepConfig *defaultConfig = FootstepConfig::Default();
+
+        quint8 i = 0;
+
     }
 
+}
+
+//
+// Config
+//
+
+FootstepConfig *FootstepConfigLoader::config() const {
+    return _config;
 }

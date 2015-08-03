@@ -1,6 +1,8 @@
 #ifndef FOOTSTEPCONFIGLOADER_H
 #define FOOTSTEPCONFIGLOADER_H
 
+#include "footstepconfig.h"
+
 #include <QString>
 
 class FootstepConfigLoader
@@ -8,6 +10,8 @@ class FootstepConfigLoader
 public:
     FootstepConfigLoader();
     ~FootstepConfigLoader();
+
+    FootstepConfig *config() const;
 
 private:
     /**
@@ -33,6 +37,8 @@ private:
 
     QString _configLocationFilePath;
     QString _configFilePath;
+
+    FootstepConfig *_config;
 
 
 };
