@@ -11,8 +11,8 @@
 
 #include "footstepconfig.h"
 #include "footstepconfigloader.h"
-#include "core/constants.h"
-#include "lib/json.h"
+#include "constants.h"
+#include "json/json.h"
 
 FootstepConfigLoader::FootstepConfigLoader()
 {
@@ -39,9 +39,6 @@ FootstepConfigLoader::FootstepConfigLoader()
 }
 
 FootstepConfigLoader::~FootstepConfigLoader() {
-
-    // Delete the config
-    delete _config;
 
 }
 
@@ -97,14 +94,24 @@ void FootstepConfigLoader::ensureDefaultConfiguration() {
 
         // Generate a default config file path
         _configFilePath = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QString(), QStandardPaths::LocateDirectory) % "/" % APP_SYS_NAME % "/config.json";
+
         // Save the location file
         this->saveConfLocationFile();
 
+        // Write the configuration
         FootstepConfig *defaultConfig = FootstepConfig::Default();
+        this-writeConfigurationFile(defaultConfig);
 
-        quint8 i = 0;
+
 
     }
+
+}
+
+//
+// Read/Write configuration file
+//
+void FootstepConfigLoader::writeConfigurationFile(FootstepConfig *config) {
 
 }
 

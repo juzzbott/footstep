@@ -10,7 +10,7 @@
 #include <QObject>
 #include <QHash>
 
-#include "core/geopoint.h"
+#include "../core/geopoint.h"
 
 class MapTileSource : public QObject
 {

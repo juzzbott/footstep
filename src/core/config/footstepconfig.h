@@ -1,7 +1,7 @@
 #ifndef FOOTSTEPCONFIG_H
 #define FOOTSTEPCONFIG_H
 
-#include "lib/json.h"
+#include "core/json/json.h"
 
 #include <QString>
 

@@ -5,8 +5,8 @@
 #include <QGraphicsScene>
 #include <QGraphicsItem>
 
-#include "app/controls/mapscene.h"
-#include "app/controls/mapview.h"
+#include "controls/mapscene.h"
+#include "controls/mapview.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
 

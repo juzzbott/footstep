@@ -1,6 +1,6 @@
 #include "footstepconfig.h"
-#include "core/constants.h"
-#include "lib/json.h"
+#include "constants.h"
+#include "json/json.h"
 
 #include <QString>
 #include <QStringBuilder>

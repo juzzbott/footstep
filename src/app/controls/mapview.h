@@ -7,7 +7,7 @@
 #include <QSharedPointer>
 
 #include "mapscene.h"
-#include "core/geopoint.h"
+#include "../core/geopoint.h"
 #include "tilesources/maptilesource.h"
 
 class MapView : public QGraphicsView

@@ -4,7 +4,7 @@
 
 #include "preferences.h"
 #include "ui_preferences.h"
-#include "config/footstepconfigloader.h"
+#include "core/config/footstepconfigloader.h"
 
 Preferences::Preferences(QWidget *parent) :
     QDialog(parent),
@@ -17,7 +17,6 @@ Preferences::Preferences(QWidget *parent) :
     ui->_txtProfileDirectory->setText(configLocation);
 
     FootstepConfigLoader config = FootstepConfigLoader();
-    quint8 i = 0;
 
 }
 

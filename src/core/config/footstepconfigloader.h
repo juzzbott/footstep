@@ -1,7 +1,7 @@
 #ifndef FOOTSTEPCONFIGLOADER_H
 #define FOOTSTEPCONFIGLOADER_H
 
-#include "footstepconfig.h"
+#include "core/config/footstepconfig.h"
 
 #include <QString>
 
@@ -34,6 +34,11 @@ private:
      * @brief Ensures that the application always has a default configuration.
      */
     void ensureDefaultConfiguration();
+
+    /**
+     * @brief Writes the configuration file to the disk.
+     */
+    void writeConfigurationFile(FootstepConfig *config);
 
     QString _configLocationFilePath;
     QString _configFilePath;
