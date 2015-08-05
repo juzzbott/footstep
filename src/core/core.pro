@@ -21,7 +21,8 @@ HEADERS  += geopoint.h \
     json/json.h \
 	constants.h \
     config/footstepconfigloader.h \
-    config/footstepconfig.h
+    config/footstepconfig.h \
+    json/ijsonserializable.h
 
 #debug:   DESTDIR  = build/core/debug
 #release: DESTDIR  = build/core/release

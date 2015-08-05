@@ -1,7 +1,8 @@
 #ifndef FOOTSTEPCONFIGLOADER_H
 #define FOOTSTEPCONFIGLOADER_H
 
-#include "core/config/footstepconfig.h"
+#include "footstepconfig.h"
+#include "core/json/ijsonserializable.h"
 
 #include <QString>
 
@@ -11,7 +12,16 @@ public:
     FootstepConfigLoader();
     ~FootstepConfigLoader();
 
+    /**
+     * @brief Returns the configuration object.
+     * @return
+     */
     FootstepConfig *config() const;
+
+    /**
+     * @brief Writes the configuration file to the disk.
+     */
+    void writeConfigurationFile(IJsonSerializable *config);
 
 private:
     /**
@@ -31,14 +41,20 @@ private:
     void loadConfigFilePath();
 
     /**
+     * @brief Determines if the configuration file exists.
+     */
+    bool configFileExists();
+
+    /**
      * @brief Ensures that the application always has a default configuration.
      */
     void ensureDefaultConfiguration();
 
     /**
-     * @brief Writes the configuration file to the disk.
+     * @brief Reads the configuration file from disk and make's it available from the config() getter.
+     * @return
      */
-    void writeConfigurationFile(FootstepConfig *config);
+    void readConfigurationFile();
 
     QString _configLocationFilePath;
     QString _configFilePath;

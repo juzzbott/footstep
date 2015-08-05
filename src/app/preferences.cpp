@@ -4,6 +4,7 @@
 
 #include "preferences.h"
 #include "ui_preferences.h"
+#include "core/config/footstepconfig.h"
 #include "core/config/footstepconfigloader.h"
 
 Preferences::Preferences(QWidget *parent) :
@@ -12,11 +13,25 @@ Preferences::Preferences(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // Set the default path
-    QString configLocation = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QString(), QStandardPaths::LocateDirectory);
-    ui->_txtProfileDirectory->setText(configLocation);
+    FootstepConfigLoader configLoader = FootstepConfigLoader();
+    FootstepConfig *config = configLoader.config();
 
-    FootstepConfigLoader config = FootstepConfigLoader();
+    // Set the values of the controls on the form
+    ui->_txtProfileDirectory->setText(config->profileDirectory());
+
+    if (config->coordinateType() == FootstepConfig::Decimal) {
+        ui->_rdoDecimal->setChecked(true);
+    } else {
+        ui->_rdoDegrees->setChecked(true);
+    }
+
+    if (config->mapTileCacheType() == FootstepConfig::DiskMemoryCache) {
+        ui->_rdoDiskMemoryCache->setChecked(true);
+    } else {
+        ui->_rdoNoCache->setChecked(true);
+    }
+
+    ui->_spnCacheExpiry->setValue(config->mapTileExpiry());
 
 }
 

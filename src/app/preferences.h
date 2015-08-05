@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <QLineEdit>
+#include <QRadioButton>
+#include <QSpinBox>
 
 namespace Ui {
 class Preferences;
@@ -23,6 +25,12 @@ private:
     Ui::Preferences *ui;
 
     QLineEdit _txtProfileDirectory;
+    QRadioButton _rdoDecimal;
+    QRadioButton _rdoDegrees;
+    QRadioButton _rdoDiskMemoryCache;
+    QRadioButton _rdoNoCache;
+    QSpinBox _spnCacheExpiry;
+
 };
 
 #endif // PREFERENCES_H
