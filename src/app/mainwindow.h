@@ -6,6 +6,7 @@
 #include <QGridLayout>
 
 #include "about.h"
+#include "preferences.h"
 
 class QAction;
 class QMenu;
@@ -26,6 +27,7 @@ private:
     Ui::MainWindow *ui;
 
     About *mAboutWindow;
+    Preferences *mPreferencesWindow;
 
 public slots:
 
@@ -33,6 +35,7 @@ public slots:
     void fileExit();
     void openFile();
     void showAbout();
+    void showPreferences();
 
 };
 

@@ -5,8 +5,8 @@
 #include <QGraphicsScene>
 #include <QGraphicsItem>
 
-#include "app/controls/mapscene.h"
-#include "app/controls/mapview.h"
+#include "controls/mapscene.h"
+#include "controls/mapview.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
 
@@ -52,4 +52,10 @@ void MainWindow::showAbout() {
     mAboutWindow = new About();
     mAboutWindow->setModal(true);
     mAboutWindow->show();
+}
+
+void MainWindow::showPreferences() {
+    mPreferencesWindow = new Preferences();
+    mPreferencesWindow->setModal(true);
+    mPreferencesWindow->show();
 }

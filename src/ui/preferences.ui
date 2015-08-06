@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Preferences</class>
+ <widget class="QDialog" name="Preferences">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>652</width>
+    <height>446</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Preferences</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>410</y>
+     <width>341</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="grpDataDirectory">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>30</y>
+     <width>611</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Profile directory</string>
+   </property>
+   <widget class="QPushButton" name="btnBrowseProfileDir">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>50</y>
+      <width>75</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Browse</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="_txtProfileDirectory">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>501</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="clearButtonEnabled">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>14</x>
+      <y>26</y>
+      <width>491</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Set the profile directory where application settings and cache is stored.</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="grpCoordinateType">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>130</y>
+     <width>611</width>
+     <height>80</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Coordinate Type</string>
+   </property>
+   <widget class="QRadioButton" name="_rdoDecimal">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Decimal</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="_rdoDegrees">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>30</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Degrees</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>12.345678, 123.456789</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>50</y>
+      <width>161</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>40° 26′ 46″ N 79° 58′ 56″ W</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="grpMapTileCacheType">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>220</y>
+     <width>611</width>
+     <height>171</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Map Caching</string>
+   </property>
+   <widget class="QRadioButton" name="_rdoDiskMemoryCache">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>141</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Disk and memory cache</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="_rdoNoCache">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>30</y>
+      <width>82</width>
+      <height>17</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>No cache</string>
+    </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>50</y>
+      <width>281</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Caches all map tiles from the server for the specified amount of time. The map loads existing tiles quicker, but the times could be slightly out of date.</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+    <property name="margin">
+     <number>0</number>
+    </property>
+    <property name="indent">
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>50</y>
+      <width>281</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Tiles are always downloaded from the server. Uses more bandwidth and map may load slower, but tiles are always up to date.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+    <property name="indent">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="_spnCacheExpiry">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>130</y>
+      <width>42</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>999</number>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>130</y>
+      <width>47</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Days</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Cache Expiry</string>
+    </property>
+    <property name="indent">
+     <number>0</number>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>Preferences</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>Preferences</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnBrowseProfileDir</sender>
+   <signal>clicked()</signal>
+   <receiver>Preferences</receiver>
+   <slot>browseProfileDirectory()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>577</x>
+     <y>85</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>325</x>
+     <y>222</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>browseProfileDirectory()</slot>
+ </slots>
+</ui>

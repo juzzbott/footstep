@@ -4,7 +4,7 @@
 #include <QGraphicsScene>
 #include <QPointer>
 
-#include "app/controls/mapscene.h"
+#include "../app/controls/mapscene.h"
 
 class InternalGraphicsScene : public QGraphicsScene
 {

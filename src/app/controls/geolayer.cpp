@@ -8,7 +8,7 @@
 
 #include "geolayer.h"
 #include "mapscene.h"
-#include "core/geopoint.h"
+#include "../core/geopoint.h"
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #include <QtDebug>
 
 #include "internalgraphicsscene.h"
-#include "app/controls/mapscene.h"
+#include "../app/controls/mapscene.h"
 
 InternalGraphicsScene::InternalGraphicsScene(MapScene *mapScene, QObject *parent) : QGraphicsScene(parent)
 {

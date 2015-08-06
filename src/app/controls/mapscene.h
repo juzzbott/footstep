@@ -6,7 +6,7 @@
 #include <QGraphicsScene>
 #include <QSet>
 
-#include "core/geopoint.h"
+#include "../core/geopoint.h"
 
 class MapScene : public QGraphicsScene
 {
