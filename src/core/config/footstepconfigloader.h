@@ -18,10 +18,7 @@ public:
      */
     FootstepConfig *config() const;
 
-    /**
-     * @brief Writes the configuration file to the disk.
-     */
-    void writeConfigurationFile(IJsonSerializable *config);
+    bool saveConfiguration(FootstepConfig *config);
 
 private:
     /**
@@ -49,6 +46,11 @@ private:
      * @brief Ensures that the application always has a default configuration.
      */
     void ensureDefaultConfiguration();
+
+    /**
+     * @brief Writes the configuration file to the disk.
+     */
+    void writeConfigurationFile(IJsonSerializable *config);
 
     /**
      * @brief Reads the configuration file from disk and make's it available from the config() getter.

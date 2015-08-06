@@ -13,16 +13,20 @@ class FootstepConfig : public IJsonSerializable
 
 public:
     enum CoordinateTypes { Decimal = 1, Degrees };
-    enum MapTileCacheType { None = 0, DiskMemoryCache = 1 };
+    enum MapTileCacheType { NoCache = 0, DiskMemoryCache = 1 };
 
 public:
-    FootstepConfig();
+    FootstepConfig(const QString &profileDir);
 
     virtual void serialise(Json::Value &root);
     virtual void deserialise(Json::Value &root);
 
+    bool profileDirChanged() const;
+
     QString profileDirectory() const;
-    void setProfileDirectory(QString &profileDirectory);
+    void setProfileDirectory(const QString &profileDirectory);
+
+    QString originalProfileDirectory() const;
 
     CoordinateTypes coordinateType() const;
     void setCoordinateType(CoordinateTypes coordType);
@@ -37,11 +41,8 @@ public:
 
 private:
 
-    /**
-     * @brief Sets the configuration values from the Json::Value root objet.
-     * @param root
-     */
-    void setConfigValues(Json::Value root);
+    bool _profileDirChanged;
+    QString _originalProfileDir;
 
     QString _profileDirectory;
     CoordinateTypes _coordinateType;

@@ -2,7 +2,9 @@
 #include <fstream>
 
 #include <QCoreApplication>
+#include <QDir>
 #include <QFile>
+#include <QFileInfo>
 #include <QTextStream>
 #include <QString>
 #include <QStringBuilder>
@@ -30,6 +32,40 @@ FootstepConfigLoader::FootstepConfigLoader()
 }
 
 FootstepConfigLoader::~FootstepConfigLoader() {
+
+}
+
+//
+// Save configuration
+//
+bool FootstepConfigLoader::saveConfiguration(FootstepConfig *config) {
+
+    // Write the configuration file
+    this->writeConfigurationFile(config);
+
+    // If the config file has changed, then update the configuration locaton file and move the profile directory to the new location.
+    if (config->profileDirChanged()) {
+
+        // If the configuration file has changed, update the location to the configuration file based on the new directory
+        _configFilePath = config->profileDirectory()% "/config.json";
+        this->saveConfLocationFile();
+
+        // If the new location already exists, delete it so we can move the existing location to the new location.
+        QDir existingDir = QDir(config->profileDirectory());
+        if (existingDir.exists()) {
+            //existingDir.removeRecursively();
+        }
+
+        // Move the profile directory to the new location
+        //QDir dir;
+        //if (!dir.rename(config->originalProfileDirectory(), config->profileDirectory())) {
+        //    qWarning() << "Unable to remove existing directory: " << config->profileDirectory();
+        //    return false;
+        //} else {
+        //    return true;
+        //}
+
+    }
 
 }
 
@@ -84,7 +120,7 @@ void FootstepConfigLoader::ensureDefaultConfiguration() {
     if (!this->confLocationFileExists()) {
 
         // Generate a default config file path
-        _configFilePath = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QString(), QStandardPaths::LocateDirectory) % "/" % APP_SYS_NAME % "/config.json";
+        _configFilePath = QStandardPaths::locate(QStandardPaths::GenericDataLocation, QString(), QStandardPaths::LocateDirectory) % APP_SYS_NAME % "/config.json";
 
         // Save the location file
         this->saveConfLocationFile();
@@ -100,8 +136,8 @@ void FootstepConfigLoader::ensureDefaultConfiguration() {
     if (!this->configFileExists()) {
 
         // Write the configuration
-        FootstepConfig *defaultConfig = FootstepConfig::Default();
-        this->writeConfigurationFile(defaultConfig);
+        _config = FootstepConfig::Default();
+        this->writeConfigurationFile(_config);
 
     }
 
@@ -129,6 +165,13 @@ void FootstepConfigLoader::writeConfigurationFile(IJsonSerializable *config) {
         return;
     }
 
+    // Get the file info. If the directory does not exist where the config file is to be placed, create it
+    QFileInfo configFileInfo = QFileInfo(_configFilePath);
+    QDir configDir = configFileInfo.absoluteDir();
+    if (!configDir.exists()) {
+        configDir.mkpath(configFileInfo.absolutePath());
+    }
+
     // Serialise the json data
     Json::Value root;
     config->serialise(root);
@@ -152,7 +195,9 @@ void FootstepConfigLoader::readConfigurationFile() {
     // If the result was successfull, then deserialise the json data to a FootStep config object
     if (result) {
 
-        FootstepConfig *config = new FootstepConfig();
+        QFileInfo configFileInfo = QFileInfo(_configFilePath);
+
+        FootstepConfig *config = new FootstepConfig(configFileInfo.absolutePath());
         config->deserialise(root);
 
         _config = config;

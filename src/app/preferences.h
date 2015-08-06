@@ -6,6 +6,8 @@
 #include <QRadioButton>
 #include <QSpinBox>
 
+#include "core/config/footstepconfig.h"
+
 namespace Ui {
 class Preferences;
 }
@@ -20,6 +22,7 @@ public:
 
 public slots:
     void browseProfileDirectory();
+    void accept();
 
 private:
     Ui::Preferences *ui;
@@ -30,6 +33,8 @@ private:
     QRadioButton _rdoDiskMemoryCache;
     QRadioButton _rdoNoCache;
     QSpinBox _spnCacheExpiry;
+
+    FootstepConfig *_config;
 
 };
 
