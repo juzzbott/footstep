@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QPointF>
 
+#include "controls/internal/internalgraphicsobject.h"
+
 class MapGraphicsObject : public QObject
 {
     Q_OBJECT
@@ -16,8 +18,14 @@ public:
     };
     Q_DECLARE_FLAGS(MapGraphicsObjectFlags,MapGraphicsObjectFlag)
 
+    //InternalGraphicsObject will call some of our protected event handlers that nobody else needs to touch
+    friend class InternalGraphicsObject;
+
 public:
-    explicit MapGraphicsObject(bool sizeIsZoomInvariant, QObject *parent = 0);
+    explicit MapGraphicsObject(bool sizeIsZoomInvariant = false, QObject *parent = 0);
+    virtual ~MapGraphicsObject();
+
+    bool sizeIsZoomInvariant() const;
 
 signals:
 
@@ -34,7 +42,7 @@ private:
 
     QPointF _position;
     double _rotation;
-    double zValue;
+    double _zValue;
     bool _selected;
 
     QString _toolTip;

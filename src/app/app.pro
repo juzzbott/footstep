@@ -25,7 +25,8 @@ SOURCES += main.cpp\
 	controls/internal/internalgraphicsscene.cpp \
 	controls/internal/internalgraphicsview.cpp \
 	controls/tilesources/maptilesource.cpp \
-	controls/mapgraphics/mapgraphicsobject.cpp
+	controls/mapgraphics/mapgraphicsobject.cpp \
+    controls/internal/internalgraphicsobject.cpp
 
 HEADERS  += mainwindow.h \
 	about.h \
@@ -37,7 +38,8 @@ HEADERS  += mainwindow.h \
 	controls/internal/internalgraphicsscene.h \
 	controls/internal/internalgraphicsview.h \
 	controls/tilesources/maptilesource.h \
-	controls/mapgraphics/mapgraphicsobject.h
+	controls/mapgraphics/mapgraphicsobject.h \
+    controls/internal/internalgraphicsobject.h
 
 FORMS    += ../ui/mainwindow.ui \
     ../ui/about.ui \
